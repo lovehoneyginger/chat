@@ -21,7 +21,7 @@ def handle(client):
             msg = message = client.recv(1024)
             if msg.decode('ascii').startswith('KICK'):
                 if nicknames[clients.index(client)] == 'admin':
-                    name_to_kick = msg.decode('ascii')[5 : ]
+                    name_to_kick = msg.decode('ascii')[5:]
                     kick_user(name_to_kick)
                 else:
                     clients.send('Command was refused!'.encode('ascii'))
