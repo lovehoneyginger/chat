@@ -24,7 +24,7 @@ def handle(client):
                     name_to_kick = msg.decode('ascii')[5:]
                     kick_user(name_to_kick)
                 else:
-                    clients.send('Command was refused!'.encode('ascii'))
+                    client.send('Command was refused!'.encode('ascii'))
             elif msg.decode('ascii').startswith('BAN'):
                 if nicknames[clients.index(client)] == 'admin':
                     name_to_ban = msg.decode('ascii')[4:]
@@ -33,7 +33,7 @@ def handle(client):
                         f.write(f'{name_to_ban}\n')
                     print(f'{name_to_ban} was banned!')
                 else:
-                    clients.send('Command was refused!'.encode('ascii'))
+                    client.send('Command was refused!'.encode('ascii'))
             else:
                 broadcast(message)
         except:

@@ -42,17 +42,17 @@ def write():
     while True:
         if stop_thread:
             break
-        message = f'{nickname} : {input("")}'
-        if message[len(nickname)+3:].startswith('/'):
+        message = f'{nickname}: {input("")}'
+        if message[len(nickname)+2:].startswith('/'):
             if nickname == 'admin':
-                if message[len(nickname)+3:].startswith('/kick'):
-                    client.send(f'KICK {message[len(nickname)+3+6:]}'.encode('ascii'))
-                elif message[len(nickname)+3:].startswith('/ban'):
-                    client.send(f'BAN {message[len(nickname)+3+5:]}'.encode('ascii'))
+                if message[len(nickname)+2:].startswith('/kick'):
+                    client.send(f'KICK {message[len(nickname)+2+6:]}'.encode('ascii'))
+                elif message[len(nickname)+2:].startswith('/ban'):
+                    client.send(f'BAN {message[len(nickname)+2+5:]}'.encode('ascii'))
             else:
                 print('Commands can only be executed by the admin!')
         else:
-            client.send(message.encode('ascii'))
+            client.send((message).encode('ascii'))
 
 
 receive_thread = threading.Thread(target = receive)
