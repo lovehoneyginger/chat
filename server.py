@@ -89,7 +89,7 @@ def kick_user(name):
         client_to_kick.send('You were kicked out by the admin'.encode('ascii'))
         client_to_kick.close()
         nicknames.remove(name)
-        broadcast(f'{name} was kicked out by the admin'.enode('ascii'))
+        broadcast(f'{name} was kicked out by the admin'.encode('ascii'))
 
 
 print('Server is listening...')

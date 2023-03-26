@@ -25,6 +25,7 @@ def receive():
                     client.send(password.encode('ascii'))
                     if client.recv(1024).decode('ascii') == 'REFUSE':
                         print('Connection was refused! Wrong password!')
+                        client.close()
                         stop_thread = True
                 elif next_message == 'BAN':
                     print('Connection refused because of ban!')
@@ -52,7 +53,7 @@ def write():
             else:
                 print('Commands can only be executed by the admin!')
         else:
-            client.send((message).encode('ascii'))
+            client.send(message.encode('ascii'))
 
 
 receive_thread = threading.Thread(target = receive)
